@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicción de Precios de Producción</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #333;
+        }
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Predicción de Precios de Producción</h1>
+    <form method="POST">
+        <label for="Nomestado">Estado:</label>
+        <select id="Nomestado" name="Nomestado">
+        <option value="1">Michoacan</option>
+            <option value="2">Chihuahua</option>
+            <option value="3">Veracruz</option>
+            <option value="4">Guanajuato</option>
+            <option value="5">Puebla</option>
+            <option value="6">Zacatecas</option>
+            <option value="7">Sonora</option>
+        </select><br>
+
+        <label for="Nomcultivo">Cultivo:</label><br>
+        <select id="Nomcultivo" name="Nomcultivo">
+            <option value="1">Aguacate</option>
+            <option value="2">Durazno</option>
+            <option value="3">Limón</option>
+            <option value="4">Manzana</option>
+            <option value="5">Melón</option>
+            <option value="6">Guayaba</option>
+            <option value="7">Pera</option>
+            <option value="8">Sandía</option>
+            <option value="9">Uva</option>
+            <option value="10">Piña</option>
+        </select><br>
+
+        <label for="Sembrada">Cantidad Sembrada:</label>
+        <input type="text" name="Sembrada" id="Sembrada" required>
+
+        <label for="Cosechada">Cantidad Cosechada:</label>
+        <input type="text" name="Cosechada" id="Cosechada" required>
+
+        <label for="Precio_tipo">Tipo de Precio:</label>
+        <select name="Precio_tipo" id="Precio_tipo">
+            <option value="Por Kilo">Por Kilo</option>
+            <option value="Por Tonelada">Por Tonelada</option>
+        </select>
+
+        <input type="submit" value="Predecir Precio">
+    </form>
+
+    {% if prediction_text %}
+        <h2>{{ prediction_text }}</h2>
+    {% endif %}
+</body>
+</html>
